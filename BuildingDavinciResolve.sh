@@ -16,133 +16,136 @@ fi
 ## Currently freezes up with zypper. Need to test with other package managers.
 
 # Installing Flatpak/Flatpak-Builder
-#echo 'I am going to build you the latest version of resolve.'
-#if [ -d resolve-flatpak ]; then
-#  echo 'Not going to clone repo, you already have it.';
-#  echo 'Installing dependency';
-#   if [ command -v flatpak-builder &>/dev/null ]; then
-#     echo 'We already have flatpak-builder';
-#   else
-#     echo 'We are installing Flatpak-builder'
-#     if [ command -v flatpak &>/dev/null ]; then
-#      echo 'Checking if flatpak-builder installed, you already have it installed.'
-#     else
-#        echo 'flatpak-builder is not installed, installing flatpak.'
-#        case "$(lsb_release -i | cut -f 2)" in 
-#            Ubuntu | ubuntu )
-#              echo 'Configuring flatpak and then flatpak-builder';
-#              yes | sudo apt update && yes | sudo apt install flatpak;
-#              echo 'Configuring flatpak';
-#              sudo flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo;
-#              echo 'flatpak is configured.';
-#              echo 'Installing flatpak-builder';
-#             yes | sudo apt install flatpak-builder;
- #             ;;
-#
- #           Fedora | fedora )
-#              yes | sudo dnf install flatpak;
-#              echo 'Configuring flatpak';
-#              sudo flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo;
-#              echo 'flatpak is configured.';
-#              echo 'Installing flatpak-builder';
-#              yes | sudo dnf install flatpak-builder;
-#              ;;
-#
-#            OpenSUSE | Opensuse | OpenSuse | openSUSE )
-#              sudo zypper up && yes | sudo zypper in flatpak;
-#              echo 'Configuring flatpak';
-#              sudo flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo;
-#              echo 'flatpak is configured.';
-#              echo 'Installing flatpak-builder';
-#              yes | sudo zypper in flatpak-builder;
-#              ;;
-#
-#
- #           Arch | arch )
- #             yes | sudo pacman -Syy flatpak;
- #             echo 'Configuring flatpak';
- #             sudo flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo;
- #             echo 'flatpak is configured.';
- #             echo 'Installing flatpak-builder';
- #             yes | sudo pacman -Syy flatpak-builder;
- #             ;;       
- #       esac       
- #    fi
- #  fi
-#else
-#  git clone https://github.com/pobthebuilder/resolve-flatpak.git --recursive ; 
-#  cd resolve-flatpak/
-#  echo 'Installing dependency';
-#  if [ command -v flatpak-builder &>/dev/null ]; then
-#    echo 'We already have flatpak-builder';
- # else
- #   echo 'We are installing Flatpak-builder'
- #    if [ command -v flatpak &>/dev/null ]; then
- #     echo 'Checking if flatpak installed, you already have it installed.'
- #    else
- #      echo 'flatpak-builder is not installed, installing flatpak-builder.'
- #      case "$(lsb_release -i | cut -f 2)" in
- #          Ubuntu | ubuntu )
- #             echo 'Configuring flatpak and then flatpak-builder';
- #             yes | sudo apt update && yes | sudo apt install flatpak;
- #             echo 'Configuring flatpak';
- #             sudo flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo;
- #             echo 'flatpak is configured.';
- #             echo 'Installing flatpak-builder';
- #             yes | sudo apt install flatpak-builder;
- #             ;;
-#
- #           Fedora | fedora )
- #             yes | sudo dnf install flatpak;
-#            echo 'Configuring flatpak';
-#              sudo flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo;
- #             echo 'flatpak is configured.';
- #             echo 'Installing flatpak-builder';
- #             yes | sudo dnf install flatpak-builder;
- #             ;;
-#
- #           OpenSUSE | Opensuse | OpenSuse )
- #             sudo zypper up && yes | sudo zypper in flatpak;
- #             echo 'Configuring flatpak';
- #             sudo flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo;
- #             echo 'flatpak is configured.';
- #             echo 'Installing flatpak-builder';
- #             yes | sudo zypper in flatpak-builder;
-  #            ;;
-#
-#
-#            Arch | arch )
-#              yes | sudo pacman -Syy flatpak;
-#              echo 'Configuring flatpak';
-#              sudo flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo;
-#              echo 'flatpak is configured.';
-#              echo 'Installing flatpak-builder';
-#              yes | sudo pacman -Syy flatpak-builder;
-#              ;;   
-#       esac
-#     fi
-#  fi
-#fi
+echo 'I am going to build you the latest version of resolve.'
+if [ -d resolve-flatpak ]; then
+  echo 'Not going to clone repo, you already have it.';
+  echo 'Installing dependency';
+   if [ command -v flatpak-builder &>/dev/null ]; then
+     echo 'We already have flatpak-builder';
+   else
+     echo 'We are installing Flatpak-builder'
+     if [ command -v flatpak &>/dev/null ]; then
+      echo 'Checking if flatpak-builder installed, you already have it installed.'
+     else
+        echo 'flatpak-builder is not installed, installing flatpak.'
+        case "$(lsb_release -i | cut -f 2)" in 
+            Ubuntu | ubuntu )
+              echo 'Configuring flatpak and then flatpak-builder';
+              yes | sudo apt update && yes | sudo apt install flatpak;
+              echo 'Configuring flatpak';
+              sudo flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo;
+              echo 'flatpak is configured.';
+              echo 'Installing flatpak-builder';
+             yes | sudo apt install flatpak-builder;
+             ;;
 
-# Building Resolve as a Flatpak
+           Fedora | fedora )
+              yes | sudo dnf install flatpak;
+              echo 'Configuring flatpak';
+              sudo flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo;
+              echo 'flatpak is configured.';
+              echo 'Installing flatpak-builder';
+              yes | sudo dnf install flatpak-builder;
+              ;;
 
-# Tell the user to install flatpak-builder
-echo 'Install flatpak-builder!';
+            OpenSUSE | Opensuse | OpenSuse | openSUSE )
+              sudo zypper up && yes | sudo zypper in flatpak;
+              echo 'Configuring flatpak';
+              sudo flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo;
+              echo 'flatpak is configured.';
+              echo 'Installing flatpak-builder';
+              sudo zypper --non-interactive in flatpak-builder;
+              ;;
+
+
+           Arch | arch )
+             yes | sudo pacman -Syy flatpak;
+             echo 'Configuring flatpak';
+             sudo flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo;
+             echo 'flatpak is configured.';
+             echo 'Installing flatpak-builder';
+             yes | sudo pacman -Syy flatpak-builder;
+             ;;       
+       esac       
+    fi
+  fi
+else
+  git clone https://github.com/pobthebuilder/resolve-flatpak.git --recursive ; 
+  cd resolve-flatpak/
+ echo 'Installing dependency';
+  if [ command -v flatpak-builder &>/dev/null ]; then
+    echo 'We already have flatpak-builder';
+ else
+   echo 'We are installing Flatpak-builder'
+    if [ command -v flatpak &>/dev/null ]; then
+     echo 'Checking if flatpak installed, you already have it installed.'
+    else
+      echo 'flatpak-builder is not installed, installing flatpak-builder.'
+      case "$(lsb_release -i | cut -f 2)" in
+          Ubuntu | ubuntu )
+             echo 'Configuring flatpak and then flatpak-builder';
+             yes | sudo apt update && yes | sudo apt install flatpak;
+             echo 'Configuring flatpak';
+             sudo flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo;
+             echo 'flatpak is configured.';
+             echo 'Installing flatpak-builder';
+             yes | sudo apt install flatpak-builder;
+             ;;
+
+           Fedora | fedora )
+             yes | sudo dnf install flatpak;
+            echo 'Configuring flatpak';
+             sudo flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo;
+             echo 'flatpak is configured.';
+             echo 'Installing flatpak-builder';
+             yes | sudo dnf install flatpak-builder;
+             ;;
+
+           OpenSUSE | Opensuse | OpenSuse )
+             sudo zypper up && yes | sudo zypper in flatpak;
+             echo 'Configuring flatpak';
+             sudo flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo;
+             echo 'flatpak is configured.';
+             echo 'Installing flatpak-builder';
+             sudo zypper --non-interactive in flatpak-builder;
+            ;;
+
+
+            Arch | arch )
+              yes | sudo pacman -Syy flatpak;
+             echo 'Configuring flatpak';
+              sudo flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo;
+              echo 'flatpak is configured.';
+              echo 'Installing flatpak-builder';
+              yes | sudo pacman -Syy flatpak-builder;
+              ;;   
+       esac
+     fi
+  fi
+fi
 
 # Changing into resolve-flatpak
 echo 'Moving to building directory';
 cd resolve-flatpak/ ;
 
 # Using user interaction to build resolve.
-read -p 'Are you installing the Free or Professional version? Answer Free/Pro.' answer
+read -p 'Are you installing the Free or Paid version? Answer Free/Paid.' answer
 
-if [ $answer == 'Free' ]; then
- echo 'Building the FREE VERSION of Davinci Resolve';
- flatpak-builder --force-clean --repo=repo build-dir com.blackmagic.Resolve.yaml;
- flatpak build-bundle repo resolve.flatpak com.blackmagic.Resolve;
-else
- echo 'Building the PRO VERSION of Davinci Resolve';
- flatpak-builder --force-clean --repo=repo build-dir com.blackmagic.ResolveStudio.yaml
- flatpak build-bundle repo resolve.flatpak com.blackmagic.ResolveStudio
-fi 
+case $answer in
+ 
+  Free | FREE )
+    echo 'Building the FREE VERSION of Davinci Resolve';
+    flatpak-builder --force-clean --repo=repo build-dir com.blackmagic.Resolve.yaml;
+    flatpak build-bundle repo resolve.flatpak com.blackmagic.Resolve;
+    ;;
+  Paid | PAID )
+    echo 'Building the PAID VERSION of Davinci Resolve';
+    flatpak-builder --force-clean --repo=repo build-dir com.blackmagic.ResolveStudio.yaml;
+    flatpak build-bundle repo resolve.flatpak com.blackmagic.ResolveStudio;
+    ;;
+   *)
+    echo 'This is not a valid option, choose Free/Paid';
+    exit;
+    ;;
 
+esac
